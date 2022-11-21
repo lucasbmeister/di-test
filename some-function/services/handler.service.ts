@@ -1,8 +1,12 @@
-import { Injectable } from '../package/services/injector.service'
-import { IRequestHandler } from '../package/types/request-handler.interface'
+import { Injectable, WebhookListener } from '../../package/services/injector.service'
+import { IRequestHandler } from '../../package/types/request-handler.interface'
 import { SomeService } from './some.service'
 
 @Injectable
+@WebhookListener({
+	events: ['EventCriadoTeste', 'EventAlteradoTeste'],
+	env: 'WEBHOOK_TESTE'
+})
 export class HandlerService implements IRequestHandler {
 	constructor(
 		private someService: SomeService,

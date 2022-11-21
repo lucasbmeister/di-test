@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '../package/services/injector.service';
+import { Inject, Injectable } from '../../package/services/injector.service';
 import { OtherService } from './other.service';
 
 @Injectable

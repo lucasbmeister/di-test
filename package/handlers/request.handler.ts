@@ -24,7 +24,7 @@ export class RequestHandler {
 	with<T extends IRequestHandler>(clazz: Constructable<T>): Promise<void> {
 		return new Promise((resolve) => {
 		// @ts-ignore
-		this.request.pipe(...this.pipes)
+		this.request.pipe(...(this.pipes ?? []))
 			.subscribe(async (request) => {
 				const handleInstance = this.injector.getInstance<T>(clazz)
 				await handleInstance.handle(this.context, request)

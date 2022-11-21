@@ -1,5 +1,5 @@
 import { filter, map } from 'rxjs/operators';
-import { RequestHandler } from './package/handlers/request.handler';
+import { RequestHandler } from '../package/handlers/request.handler';
 import { HandlerService } from './services/handler.service';
 
 export default (context: any, request: any) => RequestHandler

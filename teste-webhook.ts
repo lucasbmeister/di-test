@@ -1,13 +1,9 @@
 import dotenv from 'dotenv'
-import httpTrigger from './some-function/index'
+import httpTrigger from './registrar-webhooks/index'
 
 dotenv.config()
 
 const testes = [
-	{
-		context: { context: 'teste' },
-		request: { request: 'Teste2' }
-	},
 	{
 		context: { context: 'teste' },
 		request: { request: 'Prop1' }

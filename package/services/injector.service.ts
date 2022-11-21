@@ -22,6 +22,15 @@ export class Injector {
 
 		return currentInstance;
 	}
+
+	getAllByMetadata(key: string): Array<any> {
+		const result = []
+		this.diMap.forEach((v, k) => {
+			const metaData = Reflect.getMetadata('webhookListener', k)
+			result.push(metaData)
+		})
+		return result
+	}
 }
 
 export interface Constructable<T = any> {
@@ -43,5 +52,11 @@ export function Inject(variable: string) {
 		Object.defineProperty(target, propertyKey, {
 			get: getter
 		});
+	}
+}
+export function WebhookListener(config: {events: Array<string>, env: string}): Function {
+	return function (constructor: Function) {
+		Reflect.defineMetadata('webhookListener', config, constructor)
+		return constructor
 	}
 }
